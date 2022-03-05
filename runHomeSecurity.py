@@ -191,10 +191,12 @@ def runMainLoop(IPList, pictureMode, TimeoutLength, MotionSensitivity, MinimumOb
                                     TimeOuts[str(index+1)][target] = time.time()+TimeoutLength
 #end of runMainLoop
 
+dirname = os.path.dirname(__file__)
+setup_conf = os.path.join(dirname, 'setup.conf')
 
 #read setup.conf and prep the data so it can be passed into runMainLoop
 parser = configparser.ConfigParser()
-parser.read("setup.conf")
+parser.read(setup_conf)
 token = parser.get("setup","TOKEN")
 groupID = parser.get("setup","GROUP_ID")
 IPAddresses = parser.get("setup", "IP_ADDRESS")
